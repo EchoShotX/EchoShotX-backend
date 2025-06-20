@@ -15,7 +15,7 @@ public class SwaggerConfig {
     private static final String SWAGGER_TITLE = "EchoShotX Server Api";
     private static final String SWAGGER_DESCRIPTION = "EchoShotX Server API Document";
 
-    private static final String GITHUB_URL = "https://github.com/hamlsy/EchoShotX-backend";
+    private static final String GITHUB_URL = "https://github.com/EchoShotX/EchoShotX-backend.git";
 
     @Bean
     public OpenAPI api(){
