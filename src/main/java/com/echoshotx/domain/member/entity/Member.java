@@ -48,4 +48,11 @@ public class Member {
         this.token -= amount;
     }
 
+    public void addToken(int amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Token amount must be greater than zero.");
+        }
+        this.token += amount;
+    }
+
 }
