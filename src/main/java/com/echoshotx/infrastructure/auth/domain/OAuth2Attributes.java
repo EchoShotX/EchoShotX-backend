@@ -1,5 +1,7 @@
 package com.echoshotx.infrastructure.auth.domain;
 
+import com.echoshotx.infrastructure.auth.dto.OAuth2UserInfo;
+import com.echoshotx.infrastructure.auth.utils.OAuth2Utils;
 import lombok.Builder;
 import lombok.Getter;
 
