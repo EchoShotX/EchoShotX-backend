@@ -2,6 +2,7 @@ package com.echoshotx.infrastructure.security.config;
 
 import com.echoshotx.infrastructure.auth.handler.CustomOAuth2LoginFailureHandler;
 import com.echoshotx.infrastructure.auth.handler.CustomOAuth2LoginSuccessHandler;
+import com.echoshotx.infrastructure.auth.service.CustomOAuth2UserService;
 import com.echoshotx.infrastructure.security.exception.JwtAccessDeniedHandler;
 import com.echoshotx.infrastructure.security.exception.JwtAuthenticationEntryPoint;
 import com.echoshotx.infrastructure.security.filter.JwtAuthenticationFilter;
