@@ -30,6 +30,7 @@ public enum ErrorStatus implements BaseCode {
 
     //member error(4100 ~ 4149)
     MEMBER_NOT_FOUND(NOT_FOUND, 4100, "찾을 수 없는 유저 정보입니다."),
+    DUPLICATE_EMAIL(BAD_REQUEST, 4101, "이미 존재하는 이메일입니다."),
 
     // File Error (4201 ~ 4210)
     FILE_READ_ERROR(INTERNAL_SERVER_ERROR, 4201, "파일을 읽는 중 오류가 발생했습니다."),

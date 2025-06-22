@@ -8,6 +8,8 @@ import com.echoshotx.infrastructure.auth.domain.OAuth2Attributes;
 import com.echoshotx.infrastructure.auth.domain.SocialType;
 import com.echoshotx.infrastructure.auth.dto.OAuth2UserInfo;
 import com.echoshotx.infrastructure.auth.utils.OAuth2Utils;
+import com.echoshotx.infrastructure.exception.object.domain.MemberHandler;
+import com.echoshotx.infrastructure.exception.payload.code.ErrorStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 
 @Slf4j
 @Service
@@ -53,10 +54,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         String socialId = oauth2UserInfo.getSocialId();
         String email = oauth2UserInfo.getEmail();
 
-        log.info("socialId={}", socialId);
-        log.info("email={}", email);
-
-        //todo 중복 email 검증 및 통합
+        validateDuplicateEmail(email);
 
         String username = registrationId + "_" + socialId;
         Optional<Member> targetMember = memberRepository.findByUsername(username);
@@ -74,5 +72,11 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                 .role(Role.USER)
                 .build();
         return memberRepository.save(member);
+    }
+
+    private void validateDuplicateEmail(String email) {
+        if (memberRepository.existsByEmail(email)) {
+            throw new MemberHandler(ErrorStatus.DUPLICATE_EMAIL);
+        }
     }
 }
